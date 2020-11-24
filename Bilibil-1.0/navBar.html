@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bilibili主站</title>
+    <link rel="stylesheet" href="./assets/font_bilibili/iconfont.css" />
+    <script src="./js/jquery-3.4.1.js"></script>
+    <script src="./js/tools.js"></script>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #nav {
+      padding: 10px 24px;
+      background-color: #e4e4e4;
+      position: relative;
+      margin: 0 auto;
+      width: 1920px;
+      display: flex;
+      background-color: #0298ca;
+    }
+    ul {
+      display: inline-block;
+    }
+    ul li {
+      position: relative;
+      float: left;
+      list-style: none;
+      /* height: 30px; */
+      background-color: transparent;
+      margin: 0 4px;
+      padding: 0 5px;
+      text-align: center;
+      /* line-height: 54px; */
+    }
+    #nav li:hover {
+      /* background-color: #ddd; */
+      transition: all 1s;
+    }
+    li ul {
+      position:absolute;
+      color: pink;
+      width:100%;
+      display: none;
+      z-index: 1;
+      left: 2px;
+      font-size: 5px;
+      /* text-align: left; */
+      background-color: white;
+      /* top: 50px; */
+    }
+    li ul li {
+      width: 50px;
+      position: relative;
+      left: -10px;
+      text-align: center;   
+    }
+    /* li a:hover ul {
+            display: block;
+            background-color: pink;
+        }
+        li a:hover ul li a {
+            background-color: pink;
+        } */
+
+    #tougao {
+      background-color: pink;
+      width: 100px;
+      margin-left: 25px;
+    }
+    a {
+      text-decoration: none;
+      line-height: 30px;
+      color: #eeede9;
+    }
+    #centerItem {
+      margin: 0 30px;
+    }
+    input {
+      padding: 10px 20px;
+      width: 444px;
+      height: 30px;
+      border: none;
+      outline: none;
+      outline-color: #ddd;
+      
+    }
+    #navSearchBtn {
+      float: right;
+      top: 5px;
+      background-color: #e4e4e4;
+      width: 50px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      color: #565656;
+      margin-right: 60px;
+    }
+    #search {
+      margin: 0 60px;
+    }
+    .primaryMenu {
+        position: absolute;
+        background-color: white;
+        left: 253px;
+        width: 1414px;
+        clear: both;
+    }
+    .primaryMenu #lpMenu ul li {
+      float: left;
+      list-style: none;
+      height: 60px;
+      background-color: transparent;
+      /* margin: 16 12px !important; */
+      text-align: center;
+      line-height: 60px;
+      color: #0298ca;
+      /* clear: both; */
+    }
+
+    .primaryMenu #lpMenu ul li a {
+        clear: both;
+    }
+ 
+    .primaryMenu #lpMenu ul li a span {
+        padding: 15px 10px;
+        color: #0298ca;
+
+    }
+    .primaryMenu #lpMenu ul li a::after {
+        content: '';
+    }
+    #leftul li {
+        background-color: red;
+    }
+
+    .primaryMenu #cpMenu {
+        
+        float: left;
+    }
+    .primaryMenu #cpMenu ul li a span {
+        color:#0298ca ;
+        padding: 5px 5px;
+    }
+    .primaryMenu #cpMenu ul li a span::after {
+        content: '999+';
+        background-color: lightblue;
+        font-size: 1px;
+        
+
+    }
+    .fl {
+        float: left;
+    }
+    .line {
+        
+        height:55px ;
+        border-right: 1px solid #ddd;
+        position: relative;
+        padding-right: 10px;
+        top: 2px;
+    }
+    .primaryMenu #rpMenu ul li a span {
+        color:#0298ca ;
+        padding: 10px 10px;
+    }
+    .firstScreen {
+        position: absolute;
+        width: 1500px;
+        left:210px;
+        top: 116px;
+        /* background-color: pink; */
+    }
+    .firstScreen .swiper {
+        width: 552px;
+        height: 242px;
+        position: relative;
+        /* border: 1px solid blueviolet; */
+        overflow: hidden;
+        float: left;
+    }
+    .firstScreen .swiper .imgList {
+        width: 5550px;
+        position: absolute;
+        left: 0px;
+    }
+    .firstScreen .swiper .imgList li {
+        float: left;
+        margin: 0;
+        padding: 0;    
+    }
+     img {
+        left: 0;
+        width: 550px;
+        height: 240px;
+        
+    }
+    .show {
+        display: block;
+    }
+    .hide {
+        display: none;
+    }
+    #navImg {
+			position: absolute;
+			left:0px;
+			bottom: 10px;
+			/* margin-left: 110px; */
+		}
+	#navImg a {
+			
+			width: 10px;
+			height: 10px;
+			display: block;
+			background-color: #DDDDDD;
+			float: left;
+			margin: 0 10px;
+			border-radius: 5px;
+			opacity: .8;
+			
+		}
+	#navImg a:hover {
+			opacity: 0.8;
+			background-color: pink;
+		}  
+    .rec {
+      float: right;
+      /* background-color: #ddd; */
+      width: 948px;
+      height: 242px;
+      position: relative;
+    }
+    .recImgList li {
+      float: left;
+      width: 206px;
+      height: 116px;
+      display: inline-block;
+      /* background-color: pink; */
+      margin: 2px 15px;
+      overflow: hidden;
+    }
+    .recImgList li a img {
+      width: 206px;
+      height: 116px;
+    }
+    .extension {
+      width: 1500px;
+      /* height: 224px; */
+      /* background-color: lightblue; */
+      position: relative;
+      top: 320px;
+      left: 210px;
+    }
+    .extentbox {
+      float: left;
+      width: 1290px;
+    }
+    .extentImgList li {
+      float: left;
+      width: 206px;
+      height: 116px;
+      display: inline-block;
+    }
+    .extentImgList li a img {
+      width: 206px;
+      height: 116px;
+      clear: both;
+    }
+    .extentext {
+      margin: 10px 20px;
+      padding: 10px 0;
+    }
+    .extentRec {
+      width: 200px;
+      height: 116px;
+      background-color: #ddd;
+      display: inline-block;
+    }
+    .extentRec img {
+      width: 200px;
+      height: 168px;
+    }
+  </style>
+  <body>
+    <div id="nav">
+      <div id="leftNavItem">
+        <ul id="leftList">
+          <li>
+            <a href="javascript:;"
+              ><i class="iconfont icon-wf_Bzhan"></i>&nbsp;&nbsp;主站</a
+            >
+          </li>
+          <li class="has-submenu" id="fanju">
+            <a href="javascript:;">番剧
+              <ul>
+                <li>番剧1</li>
+                <li>番剧2</li>
+                <li>番剧3</li>
+                <li>番剧1</li>
+                <li>番剧2</li>
+                <li>番剧3</li>
+                <li>番剧1</li>
+                <li>番剧2</li>
+                <li>番剧3</li>
+                <li>番剧1</li>
+                <li>番剧2</li>
+                <li>番剧3</li>
+                <li>番剧1</li>
+                <li>番剧2</li>
+                <li>番剧3</li>
+              </ul>
+            </a>
+          </li>
+          <li class="has-submenu" id="game"><a href="javascript:;">游戏中心
+            <ul>
+                <li>游戏1</li>
+                <li>游戏2</li>
+                <li>游戏3</li>
+              </ul>
+
+          </a></li>
+          <li><a href="javascript:;">直播</a></li>
+          <li><a href="javascript:;">会员购</a></li>
+          <li><a href="javascript:;">漫画</a></li>
+          <li><a href="javascript:;">赛事</a></li>
+          <li><a href="javascript:;">BML</a></li>
+          <li>
+            <a href="javascript:;"
+              ><i class="iconfont icon-shouji"></i>下载app</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div id="centerItem">
+        <div id="search">
+          <input type="text" placeholder="松果糖豆闪电鞭" />
+          <div id="navSearchBtn">搜索</div>
+        </div>
+      </div>
+      <div id="rightNavItem">
+        <ul id="rightList">
+          <li><a href="javascript:;">头像</a></li>
+          <li><a href="javascript:;">大会员</a></li>
+          <li class="msg has-submenu">
+            <a href href="javascript:;">消息
+              <ul class="secMenuMsg">
+                <li>消息1</li>
+                <li>消息2</li>
+                <li>消息3</li>
+                <li>消息4</li>
+              </ul>
+            </a>
+          </li>
+          <li><a href="javascript:;">动态</a></li>
+          <li><a href="javascript:;">收藏</a></li>
+          <li><a href="javascript:;">历史</a></li>
+          <li><a href="javascript:;">创作中心</a></li>
+          <li id="tougao"><a href="javascript:;">投稿</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="primaryMenu">
+        <div id="lpMenu">
+          <ul id="leftul" class="last fl">
+            <li>
+                <a href="#">
+                <!-- <img src="./img/B站40x40.png" alt=""> -->
+                <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <!-- <img src="./img/B站40x40.png" alt=""> -->
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <!-- <img src="./img/B站40x40.png" alt=""> -->
+                    <span>首页</span>
+                </a>
+            </li>
+            <li class="last">
+                <a href="#">
+                    <!-- <img src="./img/B站40x40.png" alt=""> -->
+                    <span>首页</span>
+                </a>
+            </li>
+          </ul>
+        </div>
+       <div class="line fl">
+
+       </div>
+        <div id="cpMenu" class="fl">
+          <ul>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+           
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <br>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>          
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+           
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span id="lstspan">音乐</span>
+                </a>
+            </li>
+          </ul>
+        </div>
+        <div class="line fl">
+
+        </div>
+        <div id="rpMenu">
+          <ul>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <br>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>音乐</span>
+                </a></li>
+          </ul>
+        </div>
+    </div>
+    <div class="firstScreen">
+        <div class="swiper" id="swiper-con">
+            <ul class="imgList">
+                <li class=""><img src="./img/bili1.jpg" alt="#"></li>
+                <li class=""><img src="./img/bili2.jpg" alt="#"></li>
+                <li class=""><img src="./img/bili3.jpg" alt="#"></li>
+                <li class=""><img src="./img/bili4.jpg" alt="#"></li>
+                <li class=""><img src="./img/bili5.jpg" alt="#"></li>
+                <li class=""><img src="./img/bili1.jpg" alt="#"></li>
+            </ul>
+        </div>
+        <div id="navImg">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>				
+            <a href="javascript:;"></a>				
+        </div>
+        <div class="rec">
+            <ul class="recImgList">
+              <li>
+                <a href=""><img src="./img/rec2.jpg" alt=""></a>
+              </li>
+              <li>
+                <a href=""><img src="./img/rec2.jpg" alt=""></a>
+              </li>
+              <li>
+                <a href=""><img src="./img/rec2.jpg" alt=""></a>
+              </li>
+              <li>
+                <a href=""><img src="./img/rec2.jpg" alt=""></a>
+              </li>
+              <li>
+                <a href=""><img src="./img/rec2.jpg" alt=""></a>
+              </li>
+              <li>
+                <a href=""><img src="./img/rec2.jpg" alt=""></a>
+              </li>
+              <li>
+                <a href=""><img src="./img/rec2.jpg" alt=""></a>
+              </li>
+              <li>
+                <a href=""><img src="./img/rec2.jpg" alt=""></a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div class="extension">
+      <div class="extentext">
+        <span>推广</span>
+      </div>
+      <div class="extentbox">
+        <ul class="extentImgList">
+          <li>
+            <a href=""><img src="./img/rec2.jpg" alt=""></a>
+            <span>【硬件科普】硬盘的SATA M.2 NGFF NVME是什么</span>
+          </li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+        </ul>
+      </div>
+      <div class="extentRec">
+        <img src="./img/recbox.jpg" alt="">
+      </div>
+      <div class="extentext">
+        <span>推广</span>
+      </div>
+      <div class="extentbox">
+        <ul class="extentImgList">
+          <li>
+            <a href=""><img src="./img/rec2.jpg" alt=""></a>
+            <span>【硬件科普】硬盘的SATA M.2 NGFF NVME是什么</span>
+          </li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+        </ul>
+      </div>
+      <div class="extentRec">
+        <img src="./img/recbox.jpg" alt="">
+      </div>
+      <div class="extentext">
+        <span>推广</span>
+      </div>
+      <div class="extentbox">
+        <ul class="extentImgList">
+          <li>
+            <a href=""><img src="./img/rec2.jpg" alt=""></a>
+            <span>【硬件科普】硬盘的SATA M.2 NGFF NVME是什么</span>
+          </li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+        </ul>
+      </div>
+      <div class="extentRec">
+        <img src="./img/recbox.jpg" alt="">
+      </div>
+      <div class="extentext">
+        <span>推广</span>
+      </div>
+      <div class="extentbox">
+        <ul class="extentImgList">
+          <li>
+            <a href=""><img src="./img/rec2.jpg" alt=""></a>
+            <span>【硬件科普】硬盘的SATA M.2 NGFF NVME是什么</span>
+          </li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+        </ul>
+      </div>
+      <div class="extentRec">
+        <img src="./img/recbox.jpg" alt="">
+      </div>
+      <div class="extentext">
+        <span>推广</span>
+      </div>
+      <div class="extentbox">
+        <ul class="extentImgList">
+          <li>
+            <a href=""><img src="./img/rec2.jpg" alt=""></a>
+            <span>【硬件科普】硬盘的SATA M.2 NGFF NVME是什么</span>
+          </li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+        </ul>
+      </div>
+      <div class="extentRec">
+        <img src="./img/recbox.jpg" alt="">
+      </div>
+      <div class="extentext">
+        <span>推广</span>
+      </div>
+      <div class="extentbox">
+        <ul class="extentImgList">
+          <li>
+            <a href=""><img src="./img/rec2.jpg" alt=""></a>
+            <span>【硬件科普】硬盘的SATA M.2 NGFF NVME是什么</span>
+          </li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+          <li><a href=""><img src="./img/rec2.jpg" alt=""></a> <span>【硬件科普】硬盘的SATA M.2NGFFNVME是什么</span></li>
+        </ul>
+      </div>
+      <div class="extentRec">
+        <img src="./img/recbox.jpg" alt="">
+      </div>
+    </div>
+  </body>
+  <script>
+    var fstMenu = document.querySelectorAll("#leftList li");
+    var secMenu = document.querySelectorAll("li ul");
+    var fanju = document.getElementById("fanju");
+    var game = document.getElementById('game');
+    var msg = document.querySelector('.msg');
+
+    fanju.onmouseenter = function () {
+      secMenu[0].style.display = "block";
+    };
+    fanju.onmouseleave = function () {
+      secMenu[0].style.display = "none";
+    };
+    game.onmouseenter = function () {
+      secMenu[1].style.display = "block";
+    };
+    game.onmouseleave = function () {
+      secMenu[1].style.display = "none";
+    };
+    msg.onmouseenter = function () {
+      secMenu[2].style.display = "block";
+    };
+    msg.onmouseleave = function () {
+      secMenu[2].style.display = "none";
+    };
+    console.log(fstMenu.length);
+    console.log(fstMenu[1]);
+    console.log(secMenu.length);
+    var secMenuMsg = document.querySelector(".secMenuMsg");
+    console.log(secMenuMsg);
+    secMenuMsg.onclick = function () {
+      console.log(secMenuMsg);
+      // secMenuMsg.style.display = 'block';
+    };
+    var imgList = document.querySelector('.imgList');
+    var imgArr = document.getElementsByTagName('img');
+    imgList.style.width = 550*imgArr.length +'px';
+    var navImg = document.getElementById('navImg');
+    var swiperCon = document.getElementById('swiper-con');
+    navImg.style.left = (swiperCon.offsetWidth - navImg.offsetWidth)/2 + 'px';
+    console.log(imgList.style.width);
+    console.log(navImg.style.left);
+    var index = 0;
+    var allA = document.querySelectorAll('#navImg a');
+    for (let i = 0; i < allA.length; i++) {
+          allA[i].onclick  =function(){
+            index = i;
+            imgList.style.left = -550*index + "px";
+            allA[i].style.backgroundColor = '';
+          }
+    }
+    var timer;
+    timer = setInterval(() => {
+      index++;
+      index %= imgArr.length;
+      if(index >= imgArr.length - 1){
+						//则将index设置为0
+						index = 0;
+						//此时显示的最后一张图片，而最后一张图片和第一张是一摸一样
+						//通过CSS将最后一张切换成第一张
+						imgList.style.left = 0;
+          }
+          //遍历所有a，并将它们的背景颜色设置为红色
+      for(var i=0 ; i<allA.length ; i++){
+        allA[i].style.backgroundColor = "";
+      }
+      
+      //将选中的a设置为黑色
+      allA[index].style.backgroundColor = "pink";
+      imgList.style.left = -550*index + "px";
+    }, 2000);
+
+
+
+  </script>
+</html>

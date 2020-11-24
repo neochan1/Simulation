@@ -1,0 +1,114 @@
+{
+  "id": "2200506",
+  "name": "bilibili",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1017234",
+      "name": "手机",
+      "font_class": "shouji",
+      "unicode": "e6ce",
+      "unicode_decimal": 59086
+    },
+    {
+      "icon_id": "1359972",
+      "name": "频道",
+      "font_class": "pindao",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "1658315",
+      "name": "小黑屋",
+      "font_class": "xiaoheiwu",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "2134307",
+      "name": "wf_B站",
+      "font_class": "wf_Bzhan",
+      "unicode": "e683",
+      "unicode_decimal": 59011
+    },
+    {
+      "icon_id": "2802972",
+      "name": "音乐",
+      "font_class": "music",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "4743785",
+      "name": "专栏",
+      "font_class": "zhuanlan",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "4866150",
+      "name": "动态 (1)",
+      "font_class": "dongtai",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "5819405",
+      "name": "活动",
+      "font_class": "huodong",
+      "unicode": "e72e",
+      "unicode_decimal": 59182
+    },
+    {
+      "icon_id": "7507229",
+      "name": "wf_B站",
+      "font_class": "wf_Bzhan1",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "10663552",
+      "name": "课堂",
+      "font_class": "ketangxuanzhong",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "11745070",
+      "name": "关注b站",
+      "font_class": "guanzhubzhan",
+      "unicode": "e6b1",
+      "unicode_decimal": 59057
+    },
+    {
+      "icon_id": "14136916",
+      "name": "推广",
+      "font_class": "tuiguang",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "15760891",
+      "name": "b站",
+      "font_class": "bzhan",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "16013838",
+      "name": "排行榜",
+      "font_class": "paihangbang",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "16699772",
+      "name": "直播 播放 摄像机 观看 面性",
+      "font_class": "zhibobofangshexiangjiguankanmianxing-copy",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    }
+  ]
+}
